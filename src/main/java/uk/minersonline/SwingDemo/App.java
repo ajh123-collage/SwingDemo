@@ -9,6 +9,7 @@ public class App {
 
         Board board = new Board();
         window.add(board);
+        window.addKeyListener(board);
 
         window.setResizable(false);
         window.pack();
