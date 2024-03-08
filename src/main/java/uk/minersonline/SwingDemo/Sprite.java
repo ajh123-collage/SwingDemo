@@ -1,18 +1,13 @@
 package uk.minersonline.SwingDemo;
 
+import uk.minersonline.SwingDemo.resource.ResourceIdentifier;
+import uk.minersonline.SwingDemo.resource.ResourceIdentifierException;
 import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
 import uk.minersonline.SwingDemo.resource.ResourceManager;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Sprite {
     protected Point position;
@@ -26,8 +21,8 @@ public class Sprite {
         this.size = new Dimension(w, h);
 
         try {
-            image = ResourceManager.loadImage(imagePath);
-        } catch (ResourceLoadingException e) {
+            image = ResourceManager.loadImage(new ResourceIdentifier("character.png"));
+        } catch (ResourceLoadingException | ResourceIdentifierException e) {
             image = null;
             System.err.println("An error occurred whilst loading the file [" + imagePath + "]");
             e.printStackTrace(System.err);

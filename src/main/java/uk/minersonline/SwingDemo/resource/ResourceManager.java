@@ -7,12 +7,12 @@ import java.util.List;
 public class ResourceManager {
 	public static final String TEXTURE_PREFIX = "textures";
 	private static final List<ResourceLoader> resourceLoaders = new ArrayList<>(List.of(
-			new FileSystemResourceLoader()//,
-//			new ClassLoaderResourceLoader()
+			new FileSystemResourceLoader(),
+			new ClassLoaderResourceLoader()
 	));
 
 	@SuppressWarnings({"ReassignedVariable", "DataFlowIssue"})
-	public static BufferedImage loadImage(String path) throws ResourceLoadingException {
+	public static BufferedImage loadImage(ResourceIdentifier path) throws ResourceLoadingException {
 		BufferedImage image = null;
 		boolean nextLoader = true;
 		ResourceLoadingException cause = null;
