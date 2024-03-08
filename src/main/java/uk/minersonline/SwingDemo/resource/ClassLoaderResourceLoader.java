@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import static uk.minersonline.SwingDemo.resource.ResourceManager.TEXTURE_PREFIX;
 
-public class ClassLoaderResourceLoader implements ResourceLoader {
+class ClassLoaderResourceLoader implements ResourceLoader {
 	@Override
 	public BufferedImage loadImage(String path) throws ResourceLoadingException {
 		try {

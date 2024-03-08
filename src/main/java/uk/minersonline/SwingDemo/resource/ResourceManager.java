@@ -7,14 +7,15 @@ import java.util.List;
 public class ResourceManager {
 	public static final String TEXTURE_PREFIX = "textures";
 	private static final List<ResourceLoader> resourceLoaders = new ArrayList<>(List.of(
-			new FileSystemResourceLoader(),
-			new ClassLoaderResourceLoader()
+			new FileSystemResourceLoader()//,
+//			new ClassLoaderResourceLoader()
 	));
 
 	@SuppressWarnings({"ReassignedVariable", "DataFlowIssue"})
 	public static BufferedImage loadImage(String path) throws ResourceLoadingException {
 		BufferedImage image = null;
 		boolean nextLoader = true;
+		ResourceLoadingException cause = null;
 		for (ResourceLoader loader : resourceLoaders) {
 			if (nextLoader) {
 				try {
@@ -24,11 +25,16 @@ public class ResourceManager {
 					nextLoader = true;
 					// ^^^ IMPORTANT: set to true if there was an exception, so the next loader in the queue is used.
 					// this is the reason why `@SuppressWarnings({"ReassignedVariable", "DataFlowIssue"})` is used.
+					cause = e;
 				}
 			}
 		}
 		if (image == null) {
-			throw new ResourceLoadingException("Could not load the image ["+path+"] no ResourceLoaders have found it.");
+			if (cause != null) {
+				throw new ResourceLoadingException("Could not load the image [" + path + "] no ResourceLoaders have found it.", cause);
+			} else {
+				throw new ResourceLoadingException("Could not load the image [" + path + "] no ResourceLoaders have found it.");
+			}
 		}
 		return image;
 	}
