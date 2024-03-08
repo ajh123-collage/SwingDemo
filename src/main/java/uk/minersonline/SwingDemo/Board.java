@@ -17,7 +17,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         setPreferredSize(new Dimension(640, 480));
         setBackground(Color.CYAN);
 
-        player = new Player(640 / 2, 480 / 2);
+        player = new Player(
+                (640 / 2) - (Player.PLAYER_WIDTH / 2),
+                (480 / 2) - (Player.PLAYER_HEIGHT / 2)
+        );
         sprites = new ArrayList<>(List.of(player));
 
         new Timer(25, this).start();
