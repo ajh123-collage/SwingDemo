@@ -9,10 +9,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public class Sprite {
+public abstract class Sprite {
     protected Point position;
     protected Dimension size;
-
     private final BufferedImage image;
 
     public Sprite(String imagePath, int x, int y, int w, int h) {
@@ -36,4 +35,14 @@ public class Sprite {
             graphics.drawImage(this.image, position.x, position.y, size.width, size.height, observer);
         }
     }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public Dimension getSize() {
+        return size;
+    }
+
+    public abstract void tick();
 }
