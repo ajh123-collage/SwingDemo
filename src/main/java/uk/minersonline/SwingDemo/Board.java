@@ -11,8 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static uk.minersonline.SwingDemo.utils.Constants.PLAYER_HEIGHT;
-import static uk.minersonline.SwingDemo.utils.Constants.PLAYER_WIDTH;
+import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class Board extends JPanel implements KeyListener, ActionListener {
     private final Player player;
@@ -31,14 +30,14 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
         activeKeyCodes = new HashSet<>();
 
-        new Timer(25, this).start();
+        new Timer(TICK_DELAY, this).start();
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         player.handleActiveKeys(activeKeyCodes);
 
-        for(Sprite sprite : sprites) {
+        for (Sprite sprite : sprites) {
             sprite.tick();
         }
 

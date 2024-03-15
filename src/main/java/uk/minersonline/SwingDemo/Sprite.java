@@ -14,14 +14,14 @@ public abstract class Sprite {
     protected Dimension size;
     private final BufferedImage image;
 
-    public Sprite(String imagePath, int x, int y, int w, int h) {
+    public Sprite(ResourceIdentifier imagePath, int x, int y, int w, int h) {
 		BufferedImage image;
 		this.position = new Point(x, y);
         this.size = new Dimension(w, h);
 
         try {
-            image = ResourceManager.loadImage(new ResourceIdentifier("character.png"));
-        } catch (ResourceLoadingException | ResourceIdentifierException e) {
+            image = ResourceManager.loadImage(imagePath);
+        } catch (ResourceLoadingException e) {
             image = null;
             System.err.println("An error occurred whilst loading the file [" + imagePath + "]");
             e.printStackTrace(System.err);

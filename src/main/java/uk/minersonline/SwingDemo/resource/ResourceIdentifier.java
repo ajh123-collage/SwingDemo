@@ -7,25 +7,25 @@ public class ResourceIdentifier {
 	private final String path;
 	public final static String DEFAULT_NAMESPACE = "swing_demo";
 
-	public ResourceIdentifier(String namespace, String path) throws ResourceIdentifierException {
+	public ResourceIdentifier(String namespace, String path) {
 		this.namespace = namespace;
 		this.path = path;
 		isValid();
 	}
 
-	public ResourceIdentifier(String path) throws ResourceIdentifierException {
+	public ResourceIdentifier(String path) {
 		this(DEFAULT_NAMESPACE, path);
 	}
 
-	private void isValid() throws ResourceIdentifierException {
+	private void isValid() {
 		if (isValidNamespace(this.namespace) && isValidPath(this.path)) {
 			return;
 		}
 		if (!isValidNamespace(this.namespace)) {
-			throw new ResourceIdentifierException(ResourceIdentifierException.Error.NAMESPACE_ERROR);
+			throw new RuntimeException(new ResourceIdentifierException(ResourceIdentifierException.Error.NAMESPACE_ERROR));
 		}
 		if (!isValidPath(this.path)) {
-			throw new ResourceIdentifierException(ResourceIdentifierException.Error.PATH_ERROR);
+			throw new RuntimeException(new ResourceIdentifierException(ResourceIdentifierException.Error.PATH_ERROR));
 		}
 	}
 
