@@ -28,16 +28,16 @@ public class Player extends Sprite {
         dx = 0;
         dy = 0;
 
-        if (activeKeyCodes.contains(KeyEvent.VK_W)) {
+        if (activeKeyCodes.contains(KeyEvent.VK_UP)) {
             dy -= PLAYER_SPEED;
         }
-        if (activeKeyCodes.contains(KeyEvent.VK_D)) {
+        if (activeKeyCodes.contains(KeyEvent.VK_RIGHT)) {
             dx += PLAYER_SPEED;
         }
-        if (activeKeyCodes.contains(KeyEvent.VK_S)) {
+        if (activeKeyCodes.contains(KeyEvent.VK_DOWN)) {
             dy += PLAYER_SPEED;
         }
-        if (activeKeyCodes.contains(KeyEvent.VK_A)) {
+        if (activeKeyCodes.contains(KeyEvent.VK_LEFT)) {
             dx -= PLAYER_SPEED;
         }
 
