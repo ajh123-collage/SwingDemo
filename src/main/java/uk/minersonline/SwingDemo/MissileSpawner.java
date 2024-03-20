@@ -10,13 +10,11 @@ import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class MissileSpawner implements ActionListener {
     private final List<Sprite> sprites;
-    private final Player player;
     private final Random random = new Random();
     private final Timer timer;
 
-    public MissileSpawner(List<Sprite> sprites, Player player) {
+    public MissileSpawner(List<Sprite> sprites) {
         this.sprites = sprites;
-        this.player = player;
         this.timer = new Timer(MISSILE_DELAY, this);
         this.timer.start();
     }
@@ -28,19 +26,13 @@ public class MissileSpawner implements ActionListener {
             int x = random.nextInt((3 * MISSILE_WIDTH) - 1 + 1) + 1;
             sprites.add(new Missile((BOARD_WIDTH * 2) + x, y));
         }
+    }
 
-        for (Sprite sprite : sprites) {
-            if (sprite instanceof Missile) {
-                Missile missile = (Missile) sprite;
+    public void stop() {
+        this.timer.stop();
+    }
 
-                if (missile.isColliding(player)) {
-                    sprites.remove(player);
-                    this.timer.stop();
-                } else if (missile.position.x < 0) {
-                    sprites.remove(missile);
-                    player.setScore(player.getScore() + 1);
-                }
-            }
-        }
+    public void start() {
+        this.timer.start();
     }
 }

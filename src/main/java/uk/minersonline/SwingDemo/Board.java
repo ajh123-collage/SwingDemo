@@ -17,6 +17,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
     private final Player player;
     private final List<Sprite> sprites;
     private final Set<Integer> activeKeyCodes;
+    private final MissileSpawner missiles;
 
     public Board() {
         setPreferredSize(new Dimension(640, 480));
@@ -32,7 +33,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         activeKeyCodes = new HashSet<>();
 
         new Timer(TICK_DELAY, this).start();
-        new MissileSpawner(sprites, player);
+        this.missiles = new MissileSpawner(sprites);
     }
 
     @Override
@@ -41,6 +42,18 @@ public class Board extends JPanel implements KeyListener, ActionListener {
 
         for (Sprite sprite : sprites) {
             sprite.tick();
+
+            if (sprite instanceof Missile) {
+                Missile missile = (Missile) sprite;
+
+                if (missile.isColliding(player)) {
+                    sprites.remove(player);
+                    missiles.stop();
+                } else if (missile.position.x < 0) {
+                    sprites.remove(missile);
+                    player.setScore(player.getScore() + 1);
+                }
+            }
         }
 
         repaint();
