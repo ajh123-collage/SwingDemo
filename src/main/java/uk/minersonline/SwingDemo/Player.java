@@ -7,8 +7,10 @@ import java.util.Set;
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class Player extends Sprite {
-    double dx;
-    double dy;
+    private double dx;
+    private double dy;
+
+    private int score = 0;
 
     public Player(int x, int y) {
         super(PLAYER_IMAGE_PATH, x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -47,5 +49,13 @@ public class Player extends Sprite {
             dx /= Math.sqrt(2);
             dy /= Math.sqrt(2);
         }
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
