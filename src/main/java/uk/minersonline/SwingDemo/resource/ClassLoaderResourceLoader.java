@@ -10,7 +10,7 @@ import static uk.minersonline.SwingDemo.resource.ResourceManager.TEXTURE_PREFIX;
 
 class ClassLoaderResourceLoader implements ResourceLoader {
 	@Override
-	public BufferedImage loadImage(ResourceIdentifier path) throws ResourceLoadingException {
+	public BufferedImage loadBufferedImage(ResourceIdentifier path) throws ResourceLoadingException {
 		try {
 			Path pathO = path.toPath(TEXTURE_PREFIX);
 			InputStream file = this.getClass().getClassLoader().getResourceAsStream(pathO.toString());

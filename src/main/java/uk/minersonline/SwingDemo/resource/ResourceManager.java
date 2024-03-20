@@ -12,14 +12,14 @@ public class ResourceManager {
 	));
 
 	@SuppressWarnings({"ReassignedVariable", "DataFlowIssue"})
-	public static BufferedImage loadImage(ResourceIdentifier path) throws ResourceLoadingException {
+	public static BufferedImage loadBufferedImage(ResourceIdentifier path) throws ResourceLoadingException {
 		BufferedImage image = null;
 		boolean nextLoader = true;
 		ResourceLoadingException cause = null;
 		for (ResourceLoader loader : resourceLoaders) {
 			if (nextLoader) {
 				try {
-					image = loader.loadImage(path);
+					image = loader.loadBufferedImage(path);
 					nextLoader = false;
 				} catch (ResourceLoadingException e) {
 					nextLoader = true;

@@ -20,7 +20,7 @@ public abstract class Sprite {
         this.size = new Dimension(w, h);
 
         try {
-            image = ResourceManager.loadImage(imagePath);
+            image = ResourceManager.loadBufferedImage(imagePath);
         } catch (ResourceLoadingException e) {
             image = null;
             System.err.println("An error occurred whilst loading the file [" + imagePath + "]");
