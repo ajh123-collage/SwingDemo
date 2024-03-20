@@ -47,11 +47,19 @@ public class Board extends JPanel implements KeyListener, ActionListener {
                 Missile missile = (Missile) sprite;
 
                 if (missile.isColliding(player)) {
+                    sprites.add(new Explosion(missile.position.x, missile.position.y));
                     sprites.remove(player);
                     missiles.stop();
                 } else if (missile.position.x < 0) {
                     sprites.remove(missile);
                     player.setScore(player.getScore() + 1);
+                }
+            }
+
+            if (sprite instanceof Explosion) {
+                Explosion explosion = (Explosion) sprite;
+                if (explosion.getCoolDown() <= 0) {
+                    sprites.remove(explosion);
                 }
             }
         }
