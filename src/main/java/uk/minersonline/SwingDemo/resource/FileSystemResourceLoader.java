@@ -1,6 +1,7 @@
 package uk.minersonline.SwingDemo.resource;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,16 @@ class FileSystemResourceLoader implements ResourceLoader {
 			return ImageIO.read(new File(pathO.toString()));
 		} catch (IOException e) {
 			throw new ResourceLoadingException("The file could not be found", e);
+		}
+	}
+
+	@Override
+	public ImageIcon loadImageIcon(ResourceIdentifier path) throws ResourceLoadingException {
+		Path pathO = path.toPath(TEXTURE_PREFIX);
+		if (pathO.toFile().exists()) {
+			return new ImageIcon(pathO.toString());
+		} else {
+			throw new ResourceLoadingException("The file could not be found");
 		}
 	}
 }

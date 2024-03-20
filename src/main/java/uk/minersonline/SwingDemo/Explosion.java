@@ -1,5 +1,7 @@
 package uk.minersonline.SwingDemo;
 
+import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
+import uk.minersonline.SwingDemo.resource.ResourceManager;
 import uk.minersonline.SwingDemo.utils.MathHelper;
 
 import java.awt.*;
@@ -9,10 +11,16 @@ import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class Explosion extends Sprite {
     private double coolDown;
+    private final Image icon;
 
     public Explosion(int x, int y) {
         super(EXPLOSION_IMAGE_PATH, x, y, EXPLOSION_WIDTH, EXPLOSION_HEIGHT);
         this.coolDown = 1;
+        try {
+            this.icon = ResourceManager.loadImageIcon(EXPLOSION_IMAGE_PATH).getImage();
+        } catch (ResourceLoadingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -28,6 +36,8 @@ public class Explosion extends Sprite {
 
     @Override
     public void draw(Graphics graphics, ImageObserver observer) {
-        super.draw(graphics, observer);
+        if (this.icon != null) {
+            graphics.drawImage(this.icon, position.x, position.y, size.width, size.height, observer);
+        }
     }
 }
