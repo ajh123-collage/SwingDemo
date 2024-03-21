@@ -1,12 +1,13 @@
 package uk.minersonline.SwingDemo;
 
 import uk.minersonline.SwingDemo.utils.MathHelper;
+import uk.minersonline.SwingDemo.utils.Tickable;
 
 import java.awt.event.KeyEvent;
 import java.util.Set;
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
-public class Player extends ImageSprite {
+public class Player extends ImageSprite implements Tickable {
     private double dx;
     private double dy;
 

@@ -39,11 +39,6 @@ public class Explosion extends Sprite implements ActionListener, Drawable {
     }
 
     @Override
-    public void tick() {
-
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
         if (this.coolDown > 0) {
             this.coolDown -= 1;

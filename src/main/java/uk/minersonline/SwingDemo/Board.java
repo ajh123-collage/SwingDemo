@@ -1,6 +1,7 @@
 package uk.minersonline.SwingDemo;
 
 import uk.minersonline.SwingDemo.utils.Drawable;
+import uk.minersonline.SwingDemo.utils.Tickable;
 
 import javax.swing.*;
 import javax.swing.Timer;
@@ -43,7 +44,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         player.handleActiveKeys(activeKeyCodes);
 
         for (Sprite sprite : sprites) {
-            sprite.tick();
+            if (sprite instanceof Tickable) {
+                Tickable tickable = (Tickable) sprite;
+                tickable.tick();
+            }
 
             if (sprite instanceof Missile) {
                 Missile missile = (Missile) sprite;

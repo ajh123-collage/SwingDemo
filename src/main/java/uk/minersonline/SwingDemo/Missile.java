@@ -1,10 +1,11 @@
 package uk.minersonline.SwingDemo;
 
 import uk.minersonline.SwingDemo.utils.MathHelper;
+import uk.minersonline.SwingDemo.utils.Tickable;
 
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
-public class Missile extends ImageSprite {
+public class Missile extends ImageSprite implements Tickable {
     private double dx;
     private double dy;
 

@@ -19,8 +19,6 @@ public abstract class Sprite {
         return size;
     }
 
-    public abstract void tick();
-
     public Point getTopLeft() {
         return position;
     }
