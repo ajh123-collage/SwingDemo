@@ -3,12 +3,13 @@ package uk.minersonline.SwingDemo;
 import uk.minersonline.SwingDemo.resource.ResourceIdentifier;
 import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
 import uk.minersonline.SwingDemo.resource.ResourceManager;
+import uk.minersonline.SwingDemo.utils.Drawable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
-public abstract class ImageSprite extends Sprite {
+public abstract class ImageSprite extends Sprite implements Drawable {
     private final BufferedImage image;
 
     public ImageSprite(ResourceIdentifier imagePath, int x, int y, int w, int h) {

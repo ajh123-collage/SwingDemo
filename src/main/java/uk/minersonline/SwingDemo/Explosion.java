@@ -2,6 +2,7 @@ package uk.minersonline.SwingDemo;
 
 import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
 import uk.minersonline.SwingDemo.resource.ResourceManager;
+import uk.minersonline.SwingDemo.utils.Drawable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,7 @@ import java.awt.image.ImageObserver;
 
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
-public class Explosion extends Sprite implements ActionListener {
+public class Explosion extends Sprite implements ActionListener, Drawable {
     private int coolDown;
     private final Image icon;
 

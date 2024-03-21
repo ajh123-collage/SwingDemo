@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 
-import static uk.minersonline.SwingDemo.resource.ResourceManager.TEXTURE_PREFIX;
-
 class ClassLoaderResourceLoader implements ResourceLoader {
 	@Override
 	public BufferedImage loadBufferedImage(ResourceIdentifier path) throws ResourceLoadingException {

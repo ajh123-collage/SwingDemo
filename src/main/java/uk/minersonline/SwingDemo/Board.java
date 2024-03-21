@@ -1,5 +1,7 @@
 package uk.minersonline.SwingDemo;
 
+import uk.minersonline.SwingDemo.utils.Drawable;
+
 import javax.swing.*;
 import javax.swing.Timer;
 import java.awt.*;
@@ -77,7 +79,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         super.paint(graphics);
 
         for (Sprite sprite : sprites) {
-            sprite.draw(graphics, this);
+            if (sprite instanceof Drawable) {
+                Drawable drawable = (Drawable) sprite;
+                drawable.draw(graphics, this);
+            }
         }
         String score = String.valueOf(player.getScore());
         graphics.setFont(new Font("TimesRoman", Font.PLAIN, 32));

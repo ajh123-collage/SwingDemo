@@ -2,9 +2,6 @@ package uk.minersonline.SwingDemo;
 
 import uk.minersonline.SwingDemo.utils.MathHelper;
 
-import java.awt.event.KeyEvent;
-import java.util.Set;
-
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class Missile extends ImageSprite {

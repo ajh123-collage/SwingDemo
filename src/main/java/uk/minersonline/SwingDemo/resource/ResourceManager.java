@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceManager {
-	public static final String TEXTURE_PREFIX = "textures";
 	private static final List<ResourceLoader> resourceLoaders = new ArrayList<>(List.of(
 			new FileSystemResourceLoader(),
 			new ClassLoaderResourceLoader()

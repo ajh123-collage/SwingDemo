@@ -1,13 +1,6 @@
 package uk.minersonline.SwingDemo;
 
-import uk.minersonline.SwingDemo.resource.ResourceIdentifier;
-import uk.minersonline.SwingDemo.resource.ResourceIdentifierException;
-import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
-import uk.minersonline.SwingDemo.resource.ResourceManager;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 
 public abstract class Sprite {
     protected Point position;
@@ -17,9 +10,6 @@ public abstract class Sprite {
 		this.position = new Point(x, y);
         this.size = new Dimension(w, h);
 	}
-
-    public void draw(Graphics graphics, ImageObserver observer) {
-    }
 
     public Point getPosition() {
         return position;
