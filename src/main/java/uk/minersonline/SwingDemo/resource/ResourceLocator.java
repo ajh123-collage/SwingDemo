@@ -25,9 +25,9 @@ class ResourceLocator<T> {
         }
         if (resource == null) {
             if (cause != null) {
-                throw new ResourceLoadingException("Could not load the resource [" + path + "] no ResourceLoaders have found it.", cause);
+                throw new ResourceLoadingException("Could not load the resource [" + path + "] no ResourceProducers have found it.", cause);
             } else {
-                throw new ResourceLoadingException("Could not load the resource [" + path + "] no ResourceLoaders have found it.");
+                throw new ResourceLoadingException("Could not load the resource [" + path + "] no ResourceProducers have found it.");
             }
         }
         return resource;
