@@ -1,5 +1,6 @@
 package uk.minersonline.SwingDemo.resource;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -18,11 +19,20 @@ public class ResourceManager {
 		CLASS_LOADER_RESOURCE_LOADER::loadImageIcon
 	));
 
+	private static final ResourceLocator<Clip> CLIP_RESOURCE_LOCATOR = new ResourceLocator<>(List.of(
+			FILE_SYSTEM_RESOURCE_LOADER::loadClip,
+			CLASS_LOADER_RESOURCE_LOADER::loadClip
+	));
+
 	public static BufferedImage loadBufferedImage(ResourceIdentifier path) throws ResourceLoadingException {
 		return BUFFERED_IMAGE_RESOURCE_LOCATOR.loadResource(path);
 	}
 
 	public static ImageIcon loadImageIcon(ResourceIdentifier path) throws ResourceLoadingException {
 		return IMAGE_ICON_RESOURCE_LOCATOR.loadResource(path);
+	}
+
+	public static Clip loadClip(ResourceIdentifier path) throws ResourceLoadingException {
+		return CLIP_RESOURCE_LOCATOR.loadResource(path);
 	}
 }

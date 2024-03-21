@@ -1,6 +1,7 @@
 package uk.minersonline.SwingDemo.resource;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -33,4 +34,21 @@ class ClassLoaderResourceLoader implements ResourceLoader {
 		ImageIcon icon = new ImageIcon(url);
 		return icon;
 	}
+
+	@Override
+	public Clip loadClip(ResourceIdentifier path) throws ResourceLoadingException  {
+		try {
+			Path pathO = path.toPath();
+			InputStream file = this.getClass().getClassLoader().getResourceAsStream(pathO.toString());
+			if (file == null) {
+				throw new NullPointerException("The file stream is null");
+			}
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(file);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioIn);
+			return clip;
+		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+			throw new ResourceLoadingException();
+		}
+    }
 }

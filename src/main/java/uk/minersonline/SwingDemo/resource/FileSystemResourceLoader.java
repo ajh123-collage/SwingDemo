@@ -1,10 +1,12 @@
 package uk.minersonline.SwingDemo.resource;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 
 class FileSystemResourceLoader implements ResourceLoader {
@@ -25,6 +27,19 @@ class FileSystemResourceLoader implements ResourceLoader {
 			return new ImageIcon(pathO.toString());
 		} else {
 			throw new ResourceLoadingException("The file could not be found");
+		}
+	}
+
+	@Override
+	public Clip loadClip(ResourceIdentifier path) throws ResourceLoadingException {
+		try {
+			Path pathO = path.toPath();
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(pathO.toString()));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioIn);
+			return clip;
+		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
+			throw new ResourceLoadingException();
 		}
 	}
 }

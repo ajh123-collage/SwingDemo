@@ -44,14 +44,11 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         player.handleActiveKeys(activeKeyCodes);
 
         for (Sprite sprite : sprites) {
-            if (sprite instanceof Tickable) {
-                Tickable tickable = (Tickable) sprite;
+            if (sprite instanceof Tickable tickable) {
                 tickable.tick();
             }
 
-            if (sprite instanceof Missile) {
-                Missile missile = (Missile) sprite;
-
+            if (sprite instanceof Missile missile) {
                 if (missile.isColliding(player)) {
                     removeMissiles();
                     sprites.add(new Explosion(missile.position.x, missile.position.y));
@@ -63,8 +60,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
                 }
             }
 
-            if (sprite instanceof Explosion) {
-                Explosion explosion = (Explosion) sprite;
+            if (sprite instanceof Explosion explosion) {
                 if (explosion.getCoolDown() <= 0) {
                     sprites.remove(explosion);
                 }

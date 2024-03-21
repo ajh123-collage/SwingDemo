@@ -25,6 +25,7 @@ public final class Constants {
 
 	// Explosion
 	public static final ResourceIdentifier EXPLOSION_IMAGE_PATH = new ResourceIdentifier("textures/explosion.gif");
+	public static final ResourceIdentifier EXPLOSION_SOUND_PATH = new ResourceIdentifier("sounds/explosion.wav");
 	public static final int EXPLOSION_WIDTH = 64;
 	public static final int EXPLOSION_HEIGHT = 64;
 	public static final int EXPLOSION_DELAY = 160;

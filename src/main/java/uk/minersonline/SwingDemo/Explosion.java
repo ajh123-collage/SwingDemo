@@ -4,6 +4,7 @@ import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
 import uk.minersonline.SwingDemo.resource.ResourceManager;
 import uk.minersonline.SwingDemo.utils.Drawable;
 
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,13 @@ public class Explosion extends Sprite implements ActionListener, Drawable {
             throw new RuntimeException(e);
         }
         new Timer(EXPLOSION_DELAY, this).start();
+
+        try {
+            Clip sound = ResourceManager.loadClip(EXPLOSION_SOUND_PATH);
+            sound.start();
+        } catch (ResourceLoadingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public double getCoolDown() {
