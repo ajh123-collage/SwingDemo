@@ -47,6 +47,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
                 Missile missile = (Missile) sprite;
 
                 if (missile.isColliding(player)) {
+                    removeMissiles();
                     sprites.add(new Explosion(missile.position.x, missile.position.y));
                     sprites.remove(player);
                     missiles.stop();
@@ -65,6 +66,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         }
 
         repaint();
+    }
+
+    private void removeMissiles() {
+        sprites.removeIf(sprite -> sprite instanceof Missile);
     }
 
     @Override

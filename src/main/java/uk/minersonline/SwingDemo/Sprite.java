@@ -12,28 +12,13 @@ import java.awt.image.ImageObserver;
 public abstract class Sprite {
     protected Point position;
     protected Dimension size;
-    private final BufferedImage image;
 
-    public Sprite(ResourceIdentifier imagePath, int x, int y, int w, int h) {
-		BufferedImage image;
+    public Sprite(int x, int y, int w, int h) {
 		this.position = new Point(x, y);
         this.size = new Dimension(w, h);
-
-        try {
-            image = ResourceManager.loadBufferedImage(imagePath);
-        } catch (ResourceLoadingException e) {
-            image = null;
-            System.err.println("An error occurred whilst loading the file [" + imagePath + "]");
-            e.printStackTrace(System.err);
-            System.exit(-1);
-        }
-		this.image = image;
 	}
 
     public void draw(Graphics graphics, ImageObserver observer) {
-        if (this.image != null) {
-            graphics.drawImage(this.image, position.x, position.y, size.width, size.height, observer);
-        }
     }
 
     public Point getPosition() {

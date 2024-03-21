@@ -14,7 +14,7 @@ class ClassLoaderResourceLoader implements ResourceLoader {
 	@Override
 	public BufferedImage loadBufferedImage(ResourceIdentifier path) throws ResourceLoadingException {
 		try {
-			Path pathO = path.toPath(TEXTURE_PREFIX);
+			Path pathO = path.toPath();
 			InputStream file = this.getClass().getClassLoader().getResourceAsStream(pathO.toString());
 			if (file == null) {
 				throw new IOException("Could not load file, the file is not found");
@@ -27,12 +27,12 @@ class ClassLoaderResourceLoader implements ResourceLoader {
 
 	@Override
 	public ImageIcon loadImageIcon(ResourceIdentifier path) throws ResourceLoadingException {
-		Path pathO = path.toPath(TEXTURE_PREFIX);
-		URL fileURL = this.getClass().getClassLoader().getResource(pathO.toString());
-		if (pathO.toFile().exists() && fileURL != null) {
-			return new ImageIcon(fileURL);
-		} else {
-			throw new ResourceLoadingException("The file could not be found");
+		Path pathO = path.toPath();
+		URL url = this.getClass().getClassLoader().getResource(pathO.toString());
+		if (url == null) {
+			throw new ResourceLoadingException("The file url is null");
 		}
+		ImageIcon icon = new ImageIcon(url);
+		return icon;
 	}
 }

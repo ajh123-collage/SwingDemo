@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.util.Set;
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
-public class Player extends Sprite {
+public class Player extends ImageSprite {
     private double dx;
     private double dy;
 

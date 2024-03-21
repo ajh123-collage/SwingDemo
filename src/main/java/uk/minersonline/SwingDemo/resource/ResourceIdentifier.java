@@ -1,6 +1,7 @@
 package uk.minersonline.SwingDemo.resource;
 
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class ResourceIdentifier {
 	private final String namespace;
@@ -13,8 +14,25 @@ public class ResourceIdentifier {
 		isValid();
 	}
 
-	public ResourceIdentifier(String path) {
-		this(DEFAULT_NAMESPACE, path);
+	private ResourceIdentifier(String[] id) {
+		this(id[0], id[1]);
+	}
+
+	public ResourceIdentifier(String id) {
+		this(split(id));
+	}
+
+	protected static String[] split(String id) {
+		String[] strings = new String[]{DEFAULT_NAMESPACE, id};
+		int i = id.indexOf(':');
+		if (i >= 0) {
+			strings[1] = id.substring(i + 1);
+			if (i >= 1) {
+				strings[0] = id.substring(0, i);
+			}
+		}
+
+		return strings;
 	}
 
 	private void isValid() {
@@ -29,8 +47,8 @@ public class ResourceIdentifier {
 		}
 	}
 
-	public Path toPath(String prefix) {
-		return Path.of(namespace, prefix, path);
+	public Path toPath() {
+		return Path.of(namespace, path);
 	}
 
 	private static boolean isValidNamespace(String namespace) {
@@ -44,5 +62,26 @@ public class ResourceIdentifier {
 	@Override
 	public String toString() {
 		return namespace + ":" + path;
+	}
+
+	public String getNamespace() {
+		return namespace;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ResourceIdentifier that = (ResourceIdentifier) o;
+		return Objects.equals(namespace, that.namespace) && Objects.equals(path, that.path);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(namespace, path);
 	}
 }

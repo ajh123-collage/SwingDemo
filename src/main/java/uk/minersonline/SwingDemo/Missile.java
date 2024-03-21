@@ -7,7 +7,7 @@ import java.util.Set;
 
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
-public class Missile extends Sprite {
+public class Missile extends ImageSprite {
     private double dx;
     private double dy;
 
