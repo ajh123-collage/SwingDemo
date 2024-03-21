@@ -23,7 +23,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
     private final MissileSpawner missiles;
 
     public Board() {
-        setPreferredSize(new Dimension(640, 480));
+        setPreferredSize(new Dimension(BOARD_WIDTH, BOARD_HEIGHT));
         setBackground(Color.CYAN);
 
         player = new Player(
