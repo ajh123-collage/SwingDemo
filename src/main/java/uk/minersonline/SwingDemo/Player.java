@@ -1,6 +1,5 @@
 package uk.minersonline.SwingDemo;
 
-import uk.minersonline.SwingDemo.utils.MathHelper;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import java.awt.event.KeyEvent;
@@ -21,8 +20,8 @@ public class Player extends ImageSprite implements Tickable {
     public void tick() {
         position.translate((int)dx, (int)dy);
 
-        position.x = MathHelper.clamp(position.x, 0, BOARD_WIDTH - PLAYER_WIDTH);
-        position.y = MathHelper.clamp(position.y, 0, BOARD_HEIGHT - PLAYER_HEIGHT);
+        position.x = Math.clamp(position.x, 0, BOARD_WIDTH - PLAYER_WIDTH);
+        position.y = Math.clamp(position.y, 0, BOARD_HEIGHT - PLAYER_HEIGHT);
     }
 
     public void handleActiveKeys(Set<Integer> activeKeyCodes) {

@@ -1,6 +1,5 @@
 package uk.minersonline.SwingDemo;
 
-import uk.minersonline.SwingDemo.utils.MathHelper;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import static uk.minersonline.SwingDemo.utils.Constants.*;
