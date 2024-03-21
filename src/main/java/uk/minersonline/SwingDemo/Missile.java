@@ -16,7 +16,7 @@ public class Missile extends ImageSprite implements Tickable {
     public void tick() {
         position.translate((int)dx, (int)dy);
 
-        position.y = MathHelper.clamp(position.y, 0, BOARD_HEIGHT - MISSILE_HEIGHT);
+        position.y = Math.clamp(position.y, 0, BOARD_HEIGHT - MISSILE_HEIGHT);
 
         dx -= MISSILE_SPEED;
     }
