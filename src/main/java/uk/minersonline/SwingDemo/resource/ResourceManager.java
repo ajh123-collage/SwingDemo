@@ -2,7 +2,6 @@ package uk.minersonline.SwingDemo.resource;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceManager {
