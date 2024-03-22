@@ -101,6 +101,10 @@ public class Board extends JPanel implements KeyListener, ActionListener {
                     graphics.drawImage(grass_background, x5, y5, this);
                 } else if (y5 == WorldTiles.TILE_HEIGHT) {
                     graphics.drawImage(grass_beach_top_background, x5, y5, this);
+                } else if (y5 == WorldTiles.TILE_HEIGHT * 2) {
+                    graphics.drawImage(water_beach_top_background, x5, y5, this);
+                } else if (y5 >= (height - (WorldTiles.TILE_HEIGHT * 3)) && y5 < (height - (WorldTiles.TILE_HEIGHT * 2))) {
+                    graphics.drawImage(water_beach_bottom_background, x5, y5, this);
                 } else if (y5 >= (height - (WorldTiles.TILE_HEIGHT * 2))) {
                     graphics.drawImage(grass_beach_bottom_background, x5, y5, this);
                 } else {
