@@ -1,5 +1,6 @@
 package uk.minersonline.SwingDemo.sprites;
 
+import uk.minersonline.SwingDemo.Board;
 import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
 import uk.minersonline.SwingDemo.resource.ResourceManager;
 import uk.minersonline.SwingDemo.utils.Drawable;
@@ -35,10 +36,6 @@ public class Explosion extends Sprite implements ActionListener, Drawable {
         }
     }
 
-    public double getCoolDown() {
-        return coolDown;
-    }
-
     @Override
     public void draw(Graphics graphics, ImageObserver observer) {
         if (this.icon != null) {
@@ -51,5 +48,10 @@ public class Explosion extends Sprite implements ActionListener, Drawable {
         if (this.coolDown > 0) {
             this.coolDown -= 1;
         }
+    }
+
+    @Override
+    public boolean canRemove(Board board) {
+        return this.coolDown == 0;
     }
 }

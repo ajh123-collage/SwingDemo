@@ -1,5 +1,7 @@
 package uk.minersonline.SwingDemo.sprites.missile;
 
+import uk.minersonline.SwingDemo.Board;
+import uk.minersonline.SwingDemo.sprites.Explosion;
 import uk.minersonline.SwingDemo.sprites.ImageSprite;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
@@ -20,5 +22,23 @@ public class Missile extends ImageSprite implements Tickable {
         position.y = Math.clamp(position.y, 0, BOARD_HEIGHT - MISSILE_HEIGHT);
 
         dx -= MISSILE_SPEED;
+    }
+
+    @Override
+    public boolean canRemove(Board board) {
+        if (this.isColliding(board.getPlayer())) {
+            board.removeMissiles();
+            board.addSprite(new Explosion(position.x, position.y));
+            board.getPlayer().setHealth(0);
+            board.getMissiles().stop();
+            return true;
+        }
+
+        if (this.position.x < 0) {
+            board.getPlayer().setScore(board.getPlayer().getScore() + 1);
+            return true;
+        }
+
+        return false;
     }
 }

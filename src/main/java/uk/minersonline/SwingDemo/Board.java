@@ -1,6 +1,5 @@
 package uk.minersonline.SwingDemo;
 
-import uk.minersonline.SwingDemo.sprites.Explosion;
 import uk.minersonline.SwingDemo.sprites.Player;
 import uk.minersonline.SwingDemo.sprites.Sprite;
 import uk.minersonline.SwingDemo.sprites.missile.Missile;
@@ -53,30 +52,15 @@ public class Board extends JPanel implements KeyListener, ActionListener {
                 tickable.tick();
             }
 
-            if (sprite instanceof Missile missile) {
-                Point position = missile.getPosition();
-                if (missile.isColliding(player)) {
-                    removeMissiles();
-                    sprites.add(new Explosion(position.x, position.y));
-                    sprites.remove(player);
-                    missiles.stop();
-                } else if (position.x < 0) {
-                    sprites.remove(missile);
-                    player.setScore(player.getScore() + 1);
-                }
-            }
-
-            if (sprite instanceof Explosion explosion) {
-                if (explosion.getCoolDown() <= 0) {
-                    sprites.remove(explosion);
-                }
+            if (sprite.canRemove(this)) {
+                sprites.remove(sprite);
             }
         }
 
         repaint();
     }
 
-    private void removeMissiles() {
+    public void removeMissiles() {
         sprites.removeIf(sprite -> sprite instanceof Missile);
     }
 
@@ -107,5 +91,17 @@ public class Board extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         activeKeyCodes.remove(keyEvent.getKeyCode());
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void addSprite(Sprite sprite) {
+        this.sprites.add(sprite);
+    }
+
+    public MissileSpawner getMissiles() {
+        return missiles;
     }
 }

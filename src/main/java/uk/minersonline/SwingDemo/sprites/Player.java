@@ -1,6 +1,6 @@
 package uk.minersonline.SwingDemo.sprites;
 
-import uk.minersonline.SwingDemo.sprites.ImageSprite;
+import uk.minersonline.SwingDemo.Board;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import java.awt.event.KeyEvent;
@@ -12,6 +12,7 @@ public class Player extends ImageSprite implements Tickable {
     private double dy;
 
     private int score = 0;
+    private int health = 1;
 
     public Player(int x, int y) {
         super(PLAYER_IMAGE_PATH, x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
@@ -58,5 +59,18 @@ public class Player extends ImageSprite implements Tickable {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public boolean canRemove(Board board) {
+        return health == 0;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

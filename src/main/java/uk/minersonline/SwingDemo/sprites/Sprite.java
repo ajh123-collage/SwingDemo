@@ -1,5 +1,7 @@
 package uk.minersonline.SwingDemo.sprites;
 
+import uk.minersonline.SwingDemo.Board;
+
 import java.awt.*;
 
 public abstract class Sprite {
@@ -34,4 +36,6 @@ public abstract class Sprite {
                 && this.getTopLeft().y < other.getBottomRight().y
                 && this.getBottomRight().y > other.getTopLeft().y;
     }
+
+    public abstract boolean canRemove(Board board);
 }
