@@ -11,15 +11,15 @@ public final class Constants {
 	public static final int BOARD_HEIGHT = WorldTiles.TILE_HEIGHT * 9;
 
 	// Player
-	public static final ResourceIdentifier PLAYER_IMAGE_PATH = new ResourceIdentifier("textures/character.png");
-	public static final int PLAYER_WIDTH = 64;
-	public static final int PLAYER_HEIGHT = 32;
+	public static final ResourceIdentifier PLAYER_IMAGE_PATH = new ResourceIdentifier("textures/planes/bipolar_plane/type_4/bipolar_type4_1.png");
+	public static final int PLAYER_WIDTH = 96;
+	public static final int PLAYER_HEIGHT = 96;
 	public static final int PLAYER_SPEED = 10;
 
 	// Missiles
-	public static final ResourceIdentifier MISSILE_IMAGE_PATH = new ResourceIdentifier("textures/missile.png");
-	public static final int MISSILE_WIDTH = 32;
-	public static final int MISSILE_HEIGHT = 16;
+	public static final ResourceIdentifier MISSILE_IMAGE_PATH = new ResourceIdentifier("textures/missile/spr_missile.png");
+	public static final int MISSILE_WIDTH = 73;
+	public static final int MISSILE_HEIGHT = 32;
 	public static final int MISSILE_SPEED = 1;
 	public static final int MISSILE_DELAY = 500;
 

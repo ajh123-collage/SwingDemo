@@ -4,6 +4,8 @@ import uk.minersonline.SwingDemo.Board;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.util.Set;
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
@@ -15,7 +17,7 @@ public class Player extends ImageSprite implements Tickable {
     private int health = 1;
 
     public Player(int x, int y) {
-        super(PLAYER_IMAGE_PATH, x, y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        super(PLAYER_IMAGE_PATH, x, y, PLAYER_WIDTH, PLAYER_HEIGHT, getTransform());
     }
 
     @Override
@@ -72,5 +74,10 @@ public class Player extends ImageSprite implements Tickable {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    private static AffineTransformOp getTransform() {
+        AffineTransform rotation = AffineTransform.getQuadrantRotateInstance(1, PLAYER_WIDTH, PLAYER_HEIGHT);
+		return new AffineTransformOp(rotation, AffineTransformOp.TYPE_BILINEAR);
     }
 }

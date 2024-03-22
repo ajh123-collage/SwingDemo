@@ -5,6 +5,9 @@ import uk.minersonline.SwingDemo.sprites.Explosion;
 import uk.minersonline.SwingDemo.sprites.ImageSprite;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+
 import static uk.minersonline.SwingDemo.utils.Constants.*;
 
 public class Missile extends ImageSprite implements Tickable {
@@ -12,7 +15,7 @@ public class Missile extends ImageSprite implements Tickable {
     private double dy;
 
     public Missile(int x, int y) {
-        super(MISSILE_IMAGE_PATH, x, y, MISSILE_WIDTH, MISSILE_HEIGHT);
+        super(MISSILE_IMAGE_PATH, x, y, MISSILE_WIDTH, MISSILE_HEIGHT, getTransform());
     }
 
     @Override
@@ -40,5 +43,11 @@ public class Missile extends ImageSprite implements Tickable {
         }
 
         return false;
+    }
+
+    private static AffineTransformOp getTransform() {
+        AffineTransform flip = AffineTransform.getScaleInstance(-1, 1);
+        flip.translate(-MISSILE_WIDTH, 0);
+        return new AffineTransformOp(flip, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
     }
 }
