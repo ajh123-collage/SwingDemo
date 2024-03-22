@@ -23,7 +23,7 @@ public class MissileSpawner implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int _c = 0; _c < 5; _c ++) {
+        for (int _c = 0; _c < 1; _c ++) {
             int y = random.nextInt(BOARD_HEIGHT + 1);
             int x = random.nextInt((3 * MISSILE_WIDTH) - 1 + 1) + 1;
             sprites.add(new Missile((BOARD_WIDTH * 2) + x, y));

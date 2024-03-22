@@ -53,7 +53,13 @@ public class Board extends JPanel implements KeyListener, ActionListener {
             }
         }
 
-        sprites.removeIf(sprite -> sprite.canRemove(this));
+//        sprites.removeIf(sprite -> sprite.canRemove(this));
+        //noinspection Java8CollectionRemoveIf - CollectionRemoveIf cuases ConccurntModifcationExpection
+        for (Sprite sprite : sprites) {
+            if (sprite.canRemove(this)) {
+                sprites.remove(sprite);
+            }
+        }
 
         repaint();
     }
