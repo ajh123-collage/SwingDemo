@@ -1,4 +1,6 @@
-package uk.minersonline.SwingDemo;
+package uk.minersonline.SwingDemo.sprites.missile;
+
+import uk.minersonline.SwingDemo.sprites.Sprite;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

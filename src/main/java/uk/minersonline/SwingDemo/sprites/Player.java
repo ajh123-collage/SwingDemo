@@ -1,5 +1,6 @@
-package uk.minersonline.SwingDemo;
+package uk.minersonline.SwingDemo.sprites;
 
+import uk.minersonline.SwingDemo.sprites.ImageSprite;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import java.awt.event.KeyEvent;

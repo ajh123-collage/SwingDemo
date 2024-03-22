@@ -1,5 +1,6 @@
-package uk.minersonline.SwingDemo;
+package uk.minersonline.SwingDemo.sprites.missile;
 
+import uk.minersonline.SwingDemo.sprites.ImageSprite;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
 import static uk.minersonline.SwingDemo.utils.Constants.*;

@@ -1,4 +1,4 @@
-package uk.minersonline.SwingDemo;
+package uk.minersonline.SwingDemo.sprites;
 
 import uk.minersonline.SwingDemo.resource.ResourceIdentifier;
 import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
