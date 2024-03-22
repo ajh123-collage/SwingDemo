@@ -7,8 +7,8 @@ public final class Constants {
 		// prevents instantiation
 	}
 
-	public static final int BOARD_WIDTH = 640;
-	public static final int BOARD_HEIGHT = 480;
+	public static final int BOARD_WIDTH = WorldTiles.TILE_WIDTH * 9;
+	public static final int BOARD_HEIGHT = WorldTiles.TILE_HEIGHT * 9;
 
 	// Player
 	public static final ResourceIdentifier PLAYER_IMAGE_PATH = new ResourceIdentifier("textures/character.png");

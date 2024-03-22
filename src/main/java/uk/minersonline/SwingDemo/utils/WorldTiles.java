@@ -7,6 +7,8 @@ public final class WorldTiles {
         // prevents instantiation
     }
 
+    public static final int TILE_WIDTH = 64;
+    public static final int TILE_HEIGHT = 64;
     public static final ResourceIdentifier GRASS_TILE = new ResourceIdentifier("textures/terrain/grass0/straight/0/0.png");
     public static final ResourceIdentifier GRASS_BEACH_BOTTOM_TILE = new ResourceIdentifier("textures/terrain/grass-beach0/straight/270/0.png");
     public static final ResourceIdentifier GRASS_BEACH_TOP_TILE = new ResourceIdentifier("textures/terrain/grass-beach0/straight/90/0.png");
