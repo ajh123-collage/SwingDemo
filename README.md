@@ -5,3 +5,4 @@
 - Terrain tiles from https://opengameart.org/content/topdown-tileset by Scribe.
 - Planes from https://opengameart.org/content/top-down-planes-sprites-pack by sujit1717.
 - Missile from https://opengameart.org/content/missile-0 by samoliver.
+- `airplane_prop.ogg` from https://opengameart.org/content/airplane-prop-loop by AntumDeluge (converted to `.wav`.

@@ -1,8 +1,11 @@
 package uk.minersonline.SwingDemo.sprites;
 
 import uk.minersonline.SwingDemo.Board;
+import uk.minersonline.SwingDemo.resource.ResourceLoadingException;
+import uk.minersonline.SwingDemo.resource.ResourceManager;
 import uk.minersonline.SwingDemo.utils.Tickable;
 
+import javax.sound.sampled.Clip;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
@@ -15,9 +18,16 @@ public class Player extends ImageSprite implements Tickable {
 
     private int score = 0;
     private int health = 1;
+    private final Clip sound;
 
     public Player(int x, int y) {
         super(PLAYER_IMAGE_PATH, x, y, PLAYER_WIDTH, PLAYER_HEIGHT, getTransform());
+        try {
+            sound = ResourceManager.loadClip(PROPELLER_SOUND_PATH);
+            sound.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (ResourceLoadingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -26,6 +36,10 @@ public class Player extends ImageSprite implements Tickable {
 
         position.x = Math.clamp(position.x, 0, BOARD_WIDTH - PLAYER_WIDTH);
         position.y = Math.clamp(position.y, 0, BOARD_HEIGHT - PLAYER_HEIGHT);
+
+        if (health == 0) {
+            sound.stop();
+        }
     }
 
     public void handleActiveKeys(Set<Integer> activeKeyCodes) {

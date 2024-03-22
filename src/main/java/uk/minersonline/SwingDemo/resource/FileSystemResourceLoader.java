@@ -39,7 +39,7 @@ class FileSystemResourceLoader implements ResourceLoader {
 			clip.open(audioIn);
 			return clip;
 		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-			throw new ResourceLoadingException();
+			throw new ResourceLoadingException("There was an error whilst loading the clip", e);
 		}
 	}
 }

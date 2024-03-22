@@ -20,7 +20,7 @@ class ClassLoaderResourceLoader implements ResourceLoader {
 			}
 			return ImageIO.read(file);
 		} catch (IOException e) {
-			throw new ResourceLoadingException();
+			throw new ResourceLoadingException("The file could not be found", e);
 		}
 	}
 
@@ -48,7 +48,7 @@ class ClassLoaderResourceLoader implements ResourceLoader {
 			clip.open(audioIn);
 			return clip;
 		} catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-			throw new ResourceLoadingException();
+			throw new ResourceLoadingException("There was an error whilst loading the clip", e);
 		}
     }
 }

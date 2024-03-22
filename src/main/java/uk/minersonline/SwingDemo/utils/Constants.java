@@ -12,6 +12,7 @@ public final class Constants {
 
 	// Player
 	public static final ResourceIdentifier PLAYER_IMAGE_PATH = new ResourceIdentifier("textures/planes/bipolar_plane/type_4/bipolar_type4_1.png");
+	public static final ResourceIdentifier PROPELLER_SOUND_PATH = new ResourceIdentifier("sounds/airplane_prop.wav");
 	public static final int PLAYER_WIDTH = 96;
 	public static final int PLAYER_HEIGHT = 96;
 	public static final int PLAYER_SPEED = 10;
