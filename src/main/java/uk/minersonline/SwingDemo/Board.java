@@ -85,8 +85,7 @@ public class Board extends JPanel implements KeyListener, ActionListener {
         super.paint(graphics);
 
         for (Sprite sprite : sprites) {
-            if (sprite instanceof Drawable) {
-                Drawable drawable = (Drawable) sprite;
+            if (sprite instanceof Drawable drawable) {
                 drawable.draw(graphics, this);
             }
         }
