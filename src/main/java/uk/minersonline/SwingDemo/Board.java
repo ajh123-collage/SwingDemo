@@ -51,11 +51,9 @@ public class Board extends JPanel implements KeyListener, ActionListener {
             if (sprite instanceof Tickable tickable) {
                 tickable.tick();
             }
-
-            if (sprite.canRemove(this)) {
-                sprites.remove(sprite);
-            }
         }
+
+        sprites.removeIf(sprite -> sprite.canRemove(this));
 
         repaint();
     }
